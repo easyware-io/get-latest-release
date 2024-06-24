@@ -1,11 +1,11 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
 
-enum RELEASE_TYPE {
-  DRAFT = 'draft',
-  PRERELEASE = 'prerelease',
-  PUBLISHED = 'published',
-}
+const RELEASE_TYPE = {
+  DRAFT: 'draft',
+  PRERELEASE: 'prerelease',
+  PUBLISHED: 'published',
+};
 
 export default async function run(): Promise<void> {
   try {
