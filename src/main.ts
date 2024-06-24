@@ -53,6 +53,7 @@ export default async function run(): Promise<void> {
       core.setOutput('id', latestRelease.id);
       core.setOutput('name', latestRelease.name);
       core.setOutput('tag_name', latestRelease.tag_name);
+      core.setOutput('numeric_version', latestRelease.tag_name.replace('v', ''));
       core.setOutput('body', latestRelease.body);
       core.setOutput('draft', latestRelease.draft);
       core.setOutput('prerelease', latestRelease.prerelease);

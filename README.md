@@ -47,6 +47,10 @@ Name of the release
 
 Tag name of the release
 
+#### `numeric_version`
+
+Same as tag_name, but without any `v`
+
 #### `body`
 
 Body of the release
