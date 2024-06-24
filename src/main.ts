@@ -1,6 +1,12 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
 
+enum RELEASE_TYPE {
+  DRAFT = 'draft',
+  PRERELEASE = 'prerelease',
+  PUBLISHED = 'published',
+}
+
 export default async function run(): Promise<void> {
   try {
     core.debug('Getting owner and repo from context');
@@ -26,6 +32,9 @@ export default async function run(): Promise<void> {
     core.info(`Excludes: ${excludes}`);
     core.info(`Releases: ${JSON.stringify(releases)}`);
 
+    if (excludes.includes('published')) {
+      releases = releases.filter((x: { published_at: Date }) => x.published_at === null);
+    }
     if (excludes.includes('prerelease')) {
       releases = releases.filter((x: { prerelease: boolean }) => x.prerelease !== true);
     }

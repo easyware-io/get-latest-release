@@ -11,7 +11,7 @@ inputs:
     description: 'Name of the repository'
     required: false
   excludes:
-    description: 'Comma separated list of releases types to exclude. Valid values are: "draft", "prerelease"'
+    description: 'Comma separated list of releases types to exclude. Valid values are: "draft", "prerelease", "published"'
     required: false
     default: ''
 outputs:

@@ -31,7 +31,7 @@ Optional. Name of the repository. Defaults to current repo.
 
 #### `excludes`
 
-Optional. Comma separated list of releases types to exclude. Valid values are: "draft", "prerelease"
+Optional. Comma separated list of releases types to exclude. Valid values are: "draft", "prerelease", "published"
 
 ### Outputs
 
