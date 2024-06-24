@@ -32,13 +32,13 @@ export default async function run(): Promise<void> {
     core.info(`Excludes: ${excludes}`);
     core.info(`Releases: ${JSON.stringify(releases)}`);
 
-    if (excludes.includes('published')) {
+    if (excludes.includes(RELEASE_TYPE.PUBLISHED)) {
       releases = releases.filter((x: { prerelease: boolean; draft: boolean }) => x.prerelease === true || x.draft === true);
     }
-    if (excludes.includes('prerelease')) {
+    if (excludes.includes(RELEASE_TYPE.PRERELEASE)) {
       releases = releases.filter((x: { prerelease: boolean }) => x.prerelease !== true);
     }
-    if (excludes.includes('draft')) {
+    if (excludes.includes(RELEASE_TYPE.DRAFT)) {
       releases = releases.filter((x: { draft: boolean }) => x.draft !== true);
     }
 
