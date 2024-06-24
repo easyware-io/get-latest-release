@@ -22,7 +22,7 @@ export default async function run(): Promise<void> {
     core.debug(`Creating Octokit instance with token: ${token}`);
     const octokit = github.getOctokit(token);
 
-    const releasesRaw = await octokit.repos.listReleases({
+    const releasesRaw = await octokit.rest.repos.listReleases({
       owner,
       repo,
     });
@@ -33,7 +33,7 @@ export default async function run(): Promise<void> {
     core.info(`Releases: ${JSON.stringify(releases)}`);
 
     if (excludes.includes('published')) {
-      releases = releases.filter((x: { published_at: Date }) => x.published_at === null);
+      releases = releases.filter((x: { prerelease: boolean; draft: boolean }) => x.prerelease === true || x.draft === true);
     }
     if (excludes.includes('prerelease')) {
       releases = releases.filter((x: { prerelease: boolean }) => x.prerelease !== true);
