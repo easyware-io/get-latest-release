@@ -77,7 +77,7 @@ export default async function run(): Promise<void> {
       core.setOutput('author_site_admin', null);
       core.info(`Release not found.`);
     } else {
-      latestRelease = releases[0];
+      latestRelease = releases.sort((a: { tag_name: string }, b: { tag_name: string }) => b.tag_name.localeCompare(a.tag_name, undefined, { numeric: true }))[0];
 
       core.debug(`Setting outputs`);
       core.setOutput('id', latestRelease.id);
